@@ -41,7 +41,7 @@ export default (io) => {
         });
 
         // Populate sender details for frontend
-        const populatedMsg = await message.populate("sender", "username email profilePic");
+        const populatedMsg = await message.populate("sender", "_id username email profilePic");
 
         // Emit to everyone in room
         io.to(roomId).emit("newMessage", populatedMsg);

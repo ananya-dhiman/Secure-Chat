@@ -47,7 +47,7 @@ router.get("/", verifyFirebaseToken, async (req, res) => {
 
     const userRooms = await rooms
       .find({ participants: user._id })
-      .populate("participants", "username email profilePic")
+      .populate("participants", "username email profilePic firebaseId")
       .sort({ createdAt: 1 });
 
     res.json(userRooms);

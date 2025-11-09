@@ -4,10 +4,15 @@ import { Message } from '../types';
 
 interface MessageBubbleProps {
   message: Message;
-  isOwnMessage: boolean;
+  sendId:String;
+  userId:String;
 }
 
-const MessageBubble: React.FC<MessageBubbleProps> = ({ message, isOwnMessage }) => {
+const MessageBubble: React.FC<MessageBubbleProps> = ({ message, sendId,userId }) => {
+  console.log(message);
+  console.log(sendId)
+  console.log(userId)
+  const isOwnMessage=JSON.stringify(sendId)===JSON.stringify(userId)
   const bubbleClasses = isOwnMessage
     ? 'bg-indigo-600 text-white self-end rounded-l-xl rounded-t-xl'
     : 'bg-gray-700 text-gray-200 self-start rounded-r-xl rounded-t-xl';

@@ -72,7 +72,7 @@ import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "fire
 import axios from "axios";
 
 interface LoginPageProps {
-  onLogin: (user: any) => void;
+  onLogin?: (user: any) => void;
 }
 
 const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
