@@ -138,7 +138,8 @@
 //     };
 //   }, [socket, roomId]);
 
-//   // 🧠 Handle send message
+//   // 🧠 
+//  send message
 //   const handleSendMessage = async (text: string) => {
 //     if (!roomId || !socket) return;
 //     if (!text.trim()) return;
@@ -476,26 +477,12 @@ const ChatPage: React.FC<ChatPageProps> = ({ currentUser, onLogout }) => {
   }, [messages]);
 
   // Send message
-  const handleSendMessage = (message: any) => {
-    const text=message.text;
+ const handleSendMessage = (message: any) => {
+  const text = message.text;
+  if (!roomId || !socket || !text.trim()) return;
 
-    if (!roomId || !socket || !text.trim()) return;
-
-    // Optimistic update
-    setMessages(prev => [
-      ...prev,
-      {
-        _id: Date.now(), // temporary ID
-        roomId,
-        sender: currentUser,
-        text,
-        createdAt: new Date(),
-      },
-    ]);
-
-    socket.emit("sendMessage", { roomId, senderId: currentUser._id, text });
-  };
-
+  socket.emit("sendMessage", { roomId, senderId: currentUser._id, text });
+};
   return (
     <div className="flex h-screen bg-gray-900 text-white">
       <UserList
