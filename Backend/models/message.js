@@ -1,5 +1,5 @@
 // models/Message.js
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const messageSchema = new mongoose.Schema({
   roomId: {
@@ -22,4 +22,4 @@ const messageSchema = new mongoose.Schema({
   },
 }, { timestamps: true });
 
-module.exports = mongoose.model("Message", messageSchema);
+export const messages = mongoose.model("Message", messageSchema);

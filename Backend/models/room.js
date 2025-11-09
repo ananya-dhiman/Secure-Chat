@@ -1,6 +1,5 @@
 // models/Room.js
-const mongoose = require("mongoose");
-
+import mongoose from "mongoose";
 const roomSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -18,4 +17,4 @@ const roomSchema = new mongoose.Schema({
   ],
 }, { timestamps: true });
 
-module.exports = mongoose.model("Room", roomSchema);
+export const rooms = mongoose.model("Room", roomSchema);
